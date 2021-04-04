@@ -17,6 +17,7 @@ class StartPage extends StatelessWidget {
         fontWeight: FontWeight.bold
       ),
     ),
+    leading: Container(),
     actions: [
       Padding(
         padding: const EdgeInsets.only(right: 8.0),
@@ -39,6 +40,7 @@ class StartPage extends StatelessWidget {
         child: Scaffold(
           appBar: appBar,
           body: Container(
+            
           ),
         ),
       ),
