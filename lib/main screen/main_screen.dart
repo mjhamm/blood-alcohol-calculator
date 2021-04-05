@@ -6,6 +6,7 @@ import 'package:bac_calculator/start%20page/start_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -50,8 +51,8 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle.light.copyWith(
-        statusBarColor: CustomColors.primary
+      value: SystemUiOverlayStyle.dark.copyWith(
+        statusBarColor: Colors.white
       ),
       child: SafeArea(
         child: Scaffold(
@@ -62,9 +63,9 @@ class _MainScreenState extends State<MainScreen> {
           }, _selectedIndex),
           appBar: AppBar(
             centerTitle: true,
-            elevation: 0.0,
+            elevation: 4.0,
             iconTheme: IconThemeData(color: Colors.black),
-            title: Text(changeMainText(_selectedIndex), style: TextStyle(color: Colors.black),),
+            title: Text(changeMainText(_selectedIndex), style: GoogleFonts.openSans(color: Colors.black),),
             backgroundColor: Colors.white,
             actions: [
               _selectedIndex == 0 ? Padding(

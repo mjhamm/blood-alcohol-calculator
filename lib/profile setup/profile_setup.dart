@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:bac_calculator/colors/custom_colors.dart';
 import 'package:bac_calculator/main%20screen/main_screen.dart';
 import 'package:bac_calculator/profile%20setup/sex_pick_widget.dart';
@@ -18,13 +20,15 @@ class ProfileSetup extends StatefulWidget {
 
 class _ProfileSetupState extends State<ProfileSetup> {
 
-  Widget appBar = AppBar(
-    backgroundColor: CustomColors.primary,
+  AppBar appBar = AppBar(
+    backgroundColor: Colors.white,
     centerTitle: true,
+    elevation: 4.0,
+    leading: BackButton(color: Colors.black,),
     title: Text(
       'Profile Setup',
       style: GoogleFonts.openSans(
-        color: Colors.white,
+        color: Colors.black,
         fontSize: 20,
         fontWeight: FontWeight.bold
       ),
@@ -37,7 +41,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
   final heightController = TextEditingController();
 
   void displayToast(String message) {
-     final snackBar = SnackBar(content: Text(message));
+     final snackBar = SnackBar(content: Text(message), duration: Duration(seconds: 2),);
      ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
@@ -53,8 +57,8 @@ class _ProfileSetupState extends State<ProfileSetup> {
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle.light.copyWith(
-        statusBarColor: CustomColors.primary
+      value: SystemUiOverlayStyle.dark.copyWith(
+        statusBarColor: Colors.white
       ),
       child: SafeArea(
         child: GestureDetector(
@@ -66,7 +70,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
             backgroundColor: Colors.white,
             body: SingleChildScrollView(
               child: Container(
-                height: MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top,
+                height: widget.update ? MediaQuery.of(context).size.height - (120) : MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top,
                 child: Padding(
                   padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0, bottom: 24.0),
                   child: Column(
@@ -298,7 +302,9 @@ class _ProfileSetupState extends State<ProfileSetup> {
                         child: ElevatedButton(
                           onPressed: () {
                             if (widget.update) {
-                              displayToast('Profile Updated');
+                              displayToast('Profile Updated.');
+                            } else {
+                              displayToast('Profile Created.');
                             }
                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => MainScreen()));
                             // if (nameController.text.isEmpty) {

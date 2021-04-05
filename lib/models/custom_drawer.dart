@@ -23,7 +23,7 @@ class CustomNavigationDrawer extends StatelessWidget {
             child: Container(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
-              child: Center(child: Image.asset('assets/images/total_3x.png')),
+              child: Center(child: Text('BAC Calculator'),),
             )
           ),
           ListTile(

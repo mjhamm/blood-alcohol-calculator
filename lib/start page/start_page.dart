@@ -15,9 +15,9 @@ class StartPage extends StatelessWidget {
       ),
       child: SafeArea(
         child: Scaffold(
-          //appBar: appBar,
           bottomNavigationBar: 
             Container(
+              color: Colors.grey[200],
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -27,28 +27,29 @@ class StartPage extends StatelessWidget {
               ),
             ),
             body: Stack(
-              children: [ Container(
-                height: MediaQuery.of(context).size.height,
-                color: Colors.white,
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
+              children: [ 
+                Container(
+                  height: MediaQuery.of(context).size.height,
+                  color: Colors.white,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
 
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 16.0, bottom: 8.0, top: 8.0),
-                child: Align(alignment: Alignment.bottomRight, child: 
-                  FloatingActionButton(
-                    onPressed: () {},
-                    backgroundColor: CustomColors.primary,
-                    child: Icon(Icons.add, color: Colors.white, size: 28,),
-                  )
+                Padding(
+                  padding: const EdgeInsets.only(right: 16.0, bottom: 8.0, top: 8.0),
+                  child: Align(alignment: Alignment.bottomRight, child: 
+                    FloatingActionButton(
+                      onPressed: () {},
+                      backgroundColor: CustomColors.primary,
+                      child: Icon(Icons.add, color: Colors.white, size: 28,),
+                    )
+                  ),
                 ),
-              ),
-            ]
-          ),
+              ]
+            ),
         ),
       ),
     );

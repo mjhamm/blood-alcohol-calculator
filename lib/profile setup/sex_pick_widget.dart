@@ -46,7 +46,7 @@ class _SexPickerState extends State<SexPicker> {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: _mSelected ? CustomColors.primary : Colors.white,
+                  color: _mSelected ? CustomColors.primary : Colors.grey[300],
                   width: 4
                 ),
               ),
@@ -54,7 +54,7 @@ class _SexPickerState extends State<SexPicker> {
                 child: Text(
                   'M',
                   style: GoogleFonts.openSans(
-                    color: _mSelected ? CustomColors.primary : Colors.white,
+                    color: _mSelected ? CustomColors.primary : Colors.grey[300],
                     fontSize: 28,
                     fontWeight: FontWeight.bold
                   ),
@@ -76,7 +76,7 @@ class _SexPickerState extends State<SexPicker> {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: _fSelected ? CustomColors.primary : Colors.white,
+                  color: _fSelected ? CustomColors.primary : Colors.grey[300],
                   width: 4
                 ),
               ),
@@ -84,7 +84,7 @@ class _SexPickerState extends State<SexPicker> {
                 child: Text(
                   'F',
                   style: GoogleFonts.openSans(
-                    color: _fSelected ? CustomColors.primary : Colors.white,
+                    color: _fSelected ? CustomColors.primary : Colors.grey[300],
                     fontSize: 28,
                     fontWeight: FontWeight.bold
                   ),

@@ -10,20 +10,21 @@ class DisclaimerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget appBar = AppBar(
-      backgroundColor: CustomColors.primary,
+      backgroundColor: Colors.white,
+      elevation: 4.0,
       centerTitle: true,
       title: Text(
         'Disclaimer',
         style: GoogleFonts.openSans(
-          color: Colors.white,
+          color: Colors.black,
           fontSize: 20,
           fontWeight: FontWeight.bold
         ),
       ),
     );
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle.light.copyWith(
-        statusBarColor: CustomColors.primary
+      value: SystemUiOverlayStyle.dark.copyWith(
+        statusBarColor: Colors.white
       ),
       child: SafeArea(
         child: Scaffold(
