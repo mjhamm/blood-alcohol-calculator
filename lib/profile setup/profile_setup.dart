@@ -57,7 +57,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
           },
           child: Scaffold(
             appBar: appBar,
-            backgroundColor: Colors.grey[300],
+            backgroundColor: Colors.white,
             body: SingleChildScrollView(
               child: Container(
                 height: MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top,
@@ -166,7 +166,12 @@ class _ProfileSetupState extends State<ProfileSetup> {
                               width: 80,
                               decoration: BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.circular(20)
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [BoxShadow(
+                                  color: Colors.grey[400],
+                                  offset: Offset(2,3),
+                                  blurRadius: 6
+                                )]
                               ),
                               child: Center(
                                 child: TextField(
@@ -176,7 +181,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
                                     hintText: 'Age',
                                     hintStyle: GoogleFonts.openSans(
                                       color: Colors.grey[500],
-                                      fontSize: 16
+                                      fontSize: 16,
                                     ),
                                   ),
                                   style: GoogleFonts.openSans(
@@ -207,7 +212,12 @@ class _ProfileSetupState extends State<ProfileSetup> {
                               width: 80,
                               decoration: BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.circular(20)
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [BoxShadow(
+                                  color: Colors.grey[400],
+                                  offset: Offset(2,3),
+                                  blurRadius: 6
+                                )]
                               ),
                               child: Center(
                                 child: TextField(
@@ -248,7 +258,12 @@ class _ProfileSetupState extends State<ProfileSetup> {
                               width: 80,
                               decoration: BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.circular(20)
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [BoxShadow(
+                                  color: Colors.grey[400],
+                                  offset: Offset(2,3),
+                                  blurRadius: 6
+                                )]
                               ),
                               child: Center(
                                 child: TextField(

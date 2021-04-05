@@ -26,7 +26,7 @@ class DisclaimerPage extends StatelessWidget {
       child: SafeArea(
         child: Scaffold(
           appBar: appBar,
-          backgroundColor: Colors.grey[300],
+          backgroundColor: Colors.white,
           body: SingleChildScrollView(
             child: Container(
               height: MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top,
