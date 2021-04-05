@@ -1,4 +1,5 @@
 import 'package:bac_calculator/colors/custom_colors.dart';
+import 'package:bac_calculator/main%20screen/main_screen.dart';
 import 'package:bac_calculator/profile%20setup/sex_pick_widget.dart';
 import 'package:bac_calculator/start%20page/start_page.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,11 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfileSetup extends StatefulWidget {
+
+  final bool update;
+
+  const ProfileSetup({Key key, this.update}) : super(key: key);
+
   @override
   _ProfileSetupState createState() => _ProfileSetupState();
 }
@@ -56,7 +62,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
             FocusScope.of(context).unfocus();
           },
           child: Scaffold(
-            appBar: appBar,
+            appBar: widget.update ? null : appBar,
             backgroundColor: Colors.white,
             body: SingleChildScrollView(
               child: Container(
@@ -291,7 +297,10 @@ class _ProfileSetupState extends State<ProfileSetup> {
                         constraints: BoxConstraints.tightFor(width: 250, height: 40),
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => StartPage()));
+                            if (widget.update) {
+                              displayToast('Profile Updated');
+                            }
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => MainScreen()));
                             // if (nameController.text.isEmpty) {
                             //   displayToast('Please enter your name.');
                             // } else {
@@ -312,7 +321,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
                             // }
                           },
                           child: Text(
-                            'Create Profile',
+                            widget.update ? 'Update Profile' : 'Create Profile',
                             style: GoogleFonts.openSans(
                               color: Colors.white,
                               fontSize: 18,

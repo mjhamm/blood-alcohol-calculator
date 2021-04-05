@@ -17,37 +17,32 @@ class _TimeLapseTimerState extends State<TimeLapseTimer> {
         width: MediaQuery.of(context).size.width / 2 - 32,
         height: MediaQuery.of(context).size.width / 2 - 32,
         decoration: BoxDecoration(
+          border: Border.all(
+            color: CustomColors.primary,
+            width: 10
+          ),
           shape: BoxShape.circle,
-          color: CustomColors.primary
         ),
-        child: Container(
-          width: MediaQuery.of(context).size.width / 2,
-          height: MediaQuery.of(context).size.width / 2,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.white,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                '+',
-                style: GoogleFonts.openSans(
-                  color: Colors.black,
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold
-                ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              '+',
+              style: GoogleFonts.openSans(
+                color: Colors.black,
+                fontSize: 22,
+                fontWeight: FontWeight.bold
               ),
-              Text(
-                'Set Limit',
-                style: GoogleFonts.openSans(
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600
-                ),
+            ),
+            Text(
+              'Set Limit',
+              style: GoogleFonts.openSans(
+                color: Colors.black,
+                fontSize: 14,
+                fontWeight: FontWeight.w600
               ),
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );

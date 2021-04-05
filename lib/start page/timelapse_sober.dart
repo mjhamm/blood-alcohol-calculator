@@ -17,37 +17,32 @@ class _TimeLapseSoberState extends State<TimeLapseSober> {
         width: MediaQuery.of(context).size.width / 2 - 32,
         height: MediaQuery.of(context).size.width / 2 - 32,
         decoration: BoxDecoration(
+          border: Border.all(
+            color: CustomColors.liberty,
+            width: 10
+          ),
           shape: BoxShape.circle,
-          color: CustomColors.liberty
         ),
-        child: Container(
-          width: MediaQuery.of(context).size.width / 2,
-          height: MediaQuery.of(context).size.width / 2,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.white,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                '0:00',
-                style: GoogleFonts.openSans(
-                  color: Colors.black,
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold
-                ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              '0:00',
+              style: GoogleFonts.openSans(
+                color: Colors.black,
+                fontSize: 22,
+                fontWeight: FontWeight.bold
               ),
-              Text(
-                'Until Sober',
-                style: GoogleFonts.openSans(
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600
-                ),
-              )
-            ],
-          ),
+            ),
+            Text(
+              'Until Sober',
+              style: GoogleFonts.openSans(
+                color: Colors.black,
+                fontSize: 14,
+                fontWeight: FontWeight.w600
+              ),
+            )
+          ],
         ),
       ),
     );

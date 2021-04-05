@@ -1,5 +1,7 @@
 import 'package:bac_calculator/colors/custom_colors.dart';
+import 'package:bac_calculator/main%20screen/main_screen.dart';
 import 'package:bac_calculator/profile%20setup/profile_setup.dart';
+import 'package:bac_calculator/start%20page/start_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,21 +37,6 @@ class DisclaimerPage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      'Disclaimer',
-                      style: GoogleFonts.openSans(
-                        color: Colors.black,
-                        fontSize: 22,
-                        fontWeight: FontWeight.w600
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 16.0),
-                      child: Divider(
-                        thickness: 2,
-                        color: Colors.black,
-                      ),
-                    ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 16.0),
                       child: Text(
@@ -88,7 +75,7 @@ class DisclaimerPage extends StatelessWidget {
                       constraints: BoxConstraints.tightFor(width: 250, height: 40),
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileSetup()));
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileSetup(update: false,)));
                         },
                         child: Text(
                           'I Agree',
