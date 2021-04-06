@@ -1,4 +1,4 @@
-import 'package:bac_calculator/colors/custom_colors.dart';
+import 'package:bac_calculator/history/history_page.dart';
 import 'package:bac_calculator/models/bottom_sheet_help.dart';
 import 'package:bac_calculator/models/custom_drawer.dart';
 import 'package:bac_calculator/profile%20setup/profile_setup.dart';
@@ -29,6 +29,7 @@ class _MainScreenState extends State<MainScreen> {
 
   int _selectedIndex= 0;
   var startPage = new StartPage();
+  var historyPage = new HistoryPage();
   var profileUpdate = new ProfileSetup(update: true,);
 
   String changeMainText(int _currentIndex) {
@@ -87,7 +88,7 @@ class _MainScreenState extends State<MainScreen> {
                   return startPage;
                   break;
                 case 1:
-                  return Placeholder(color: Colors.blue,);
+                  return historyPage;
                   break;
                 case 2:
                   return profileUpdate;

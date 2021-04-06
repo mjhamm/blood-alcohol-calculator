@@ -25,6 +25,9 @@ dependencies:
     sdk: flutter
   adobe_xd: ^1.1.0+1
   google_fonts: ^2.0.0
+  floating_action_bubble: ^1.1.2
+  url_launcher: ^6.0.2
+  table_calendar: ^2.3.3
 
 
   # The following adds the Cupertino Icons font to your application.

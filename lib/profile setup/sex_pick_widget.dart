@@ -11,7 +11,7 @@ class SexPicker extends StatefulWidget {
 class _SexPickerState extends State<SexPicker> {
 
   int _sexSelected = 0;
-  bool _selected = false;
+  //bool _selected = false;
   bool _mSelected = false;
   bool _fSelected = false;
 

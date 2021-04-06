@@ -14,17 +14,17 @@ class _TimeLapseTimerState extends State<TimeLapseTimer> {
       padding: const EdgeInsets.all(12.0),
       child: GestureDetector(
         onTap: () {
-          final snackBar = SnackBar(content: Text('BAC Limit'));
+          final snackBar = SnackBar(content: Text('BAC Limit'), duration: Duration(seconds: 2),);
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         },
         child: Container(
           padding: EdgeInsets.all(12),
-          width: MediaQuery.of(context).size.width / 2 - 32,
-          height: MediaQuery.of(context).size.width / 2 - 32,
+          width: MediaQuery.of(context).size.width / 2 - 48,
+          height: MediaQuery.of(context).size.width / 2 - 48,
           decoration: BoxDecoration(
             border: Border.all(
               color: CustomColors.primary,
-              width: 10,
+              width: 8,
             ),
             shape: BoxShape.circle,
           ),

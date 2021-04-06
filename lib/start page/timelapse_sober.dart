@@ -14,12 +14,12 @@ class _TimeLapseSoberState extends State<TimeLapseSober> {
       padding: const EdgeInsets.all(12.0),
       child: Container(
         padding: EdgeInsets.all(12),
-        width: MediaQuery.of(context).size.width / 2 - 32,
-        height: MediaQuery.of(context).size.width / 2 - 32,
+        width: MediaQuery.of(context).size.width / 2 - 48,
+        height: MediaQuery.of(context).size.width / 2 - 48,
         decoration: BoxDecoration(
           border: Border.all(
-            color: CustomColors.liberty,
-            width: 10
+            color: CustomColors.deepGray,
+            width: 8
           ),
           shape: BoxShape.circle,
         ),

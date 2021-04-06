@@ -1,6 +1,6 @@
-import 'package:bac_calculator/colors/custom_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BottomSheetHelp extends StatelessWidget {
 
@@ -10,6 +10,15 @@ class BottomSheetHelp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    Future<void> _openCallTaxi(String url) async {
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
+    }
+
     return Padding(
       padding: MediaQuery.of(context).viewInsets,
       child: CupertinoActionSheet(
@@ -40,7 +49,9 @@ class BottomSheetHelp extends StatelessWidget {
           ),
         actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             child: Text(
               'Call Uber',
               style: TextStyle(
@@ -49,7 +60,10 @@ class BottomSheetHelp extends StatelessWidget {
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              launch('tel:17819742408');
+              Navigator.pop(context);
+            },
             child: Text(
               'Call Taxi',
               style: TextStyle(
@@ -58,7 +72,9 @@ class BottomSheetHelp extends StatelessWidget {
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             child: Text(
               'Check MBTA Schedule',
               style: TextStyle(

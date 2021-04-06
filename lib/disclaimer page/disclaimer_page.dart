@@ -1,7 +1,5 @@
 import 'package:bac_calculator/colors/custom_colors.dart';
-import 'package:bac_calculator/main%20screen/main_screen.dart';
 import 'package:bac_calculator/profile%20setup/profile_setup.dart';
-import 'package:bac_calculator/start%20page/start_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
