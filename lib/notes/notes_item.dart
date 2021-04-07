@@ -1,0 +1,6 @@
+
+class NotesItem {
+
+  String note;
+  
+}

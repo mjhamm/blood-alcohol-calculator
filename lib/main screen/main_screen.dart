@@ -1,6 +1,7 @@
 import 'package:bac_calculator/history/history_page.dart';
 import 'package:bac_calculator/models/bottom_sheet_help.dart';
 import 'package:bac_calculator/models/custom_drawer.dart';
+import 'package:bac_calculator/notes/notes_page.dart';
 import 'package:bac_calculator/profile%20setup/profile_setup.dart';
 import 'package:bac_calculator/start%20page/start_page.dart';
 import 'package:flutter/cupertino.dart';
@@ -30,6 +31,7 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex= 0;
   var startPage = new StartPage();
   var historyPage = new HistoryPage();
+  var notesPage = new NotesPage();
   var profileUpdate = new ProfileSetup(update: true,);
 
   String changeMainText(int _currentIndex) {
@@ -41,6 +43,9 @@ class _MainScreenState extends State<MainScreen> {
         return 'History';
         break;
       case 2:
+        return 'Notes';
+        break;
+      case 3:
         return 'Update Profile';
         break;
       default:
@@ -91,6 +96,9 @@ class _MainScreenState extends State<MainScreen> {
                   return historyPage;
                   break;
                 case 2:
+                  return notesPage;
+                  break;
+                case 3:
                   return profileUpdate;
                   break;
                 default:

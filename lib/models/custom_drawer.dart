@@ -55,8 +55,8 @@ class CustomNavigationDrawer extends StatelessWidget {
           ListTile(
             selected: _currentIndex == 2,
             selectedTileColor: CustomColors.primary,
-            leading: Icon(CupertinoIcons.person_circle, color: _currentIndex == 2 ? Colors.white : Colors.grey,),
-            title: Text('Profile', style: TextStyle(color: _currentIndex == 2 ? Colors.white : Colors.black),),
+            leading: Icon(CupertinoIcons.pen, color: _currentIndex == 2 ? Colors.white : Colors.grey,),
+            title: Text('Notes', style: TextStyle(color: _currentIndex == 2 ? Colors.white : Colors.black),),
             onTap: () {
               onIndexChanged(2);
               Navigator.pop(context);
@@ -65,6 +65,20 @@ class CustomNavigationDrawer extends StatelessWidget {
           Divider(
             height: 1,
           ),
+          ListTile(
+            selected: _currentIndex == 3,
+            selectedTileColor: CustomColors.primary,
+            leading: Icon(CupertinoIcons.person_circle, color: _currentIndex == 3 ? Colors.white : Colors.grey,),
+            title: Text('Profile', style: TextStyle(color: _currentIndex == 3 ? Colors.white : Colors.black),),
+            onTap: () {
+              onIndexChanged(3);
+              Navigator.pop(context);
+            },
+          ),
+          Divider(
+            height: 1,
+          ),
+          
         ],
       ),
     );
