@@ -32,7 +32,7 @@ class DisclaimerPage extends StatelessWidget {
             child: Container(
               height: MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top,
               child: Padding(
-                padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0, bottom: 24.0),
+                padding: const EdgeInsets.only(top: 8.0, right: 16.0, left: 16.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -60,21 +60,25 @@ class DisclaimerPage extends StatelessWidget {
                         color: Colors.black,
                         fontSize: 22,
                         fontWeight: FontWeight.w600
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 16.0),
-                      child: Divider(
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(bottom: 16.0),
+                                    child: Divider(
                         thickness: 2,
                         color: Colors.black,
-                      ),
-                    ),
-                    Spacer(),
-                    ConstrainedBox(
-                      constraints: BoxConstraints.tightFor(width: 250, height: 40),
-                      child: ElevatedButton(
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  Padding(
+                                    padding: const EdgeInsets.only(bottom: 24.0),
+                                    child: ConstrainedBox(
+                                      constraints: BoxConstraints.tightFor(width: 250, height: 40),
+                                      child: ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileSetup(update: false,)));
+                          Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => ProfileSetup(update: false,)),
+                          );
                         },
                         child: Text(
                           'I Agree',
@@ -90,7 +94,8 @@ class DisclaimerPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                    )
+                    ),
+                                  )
                   ],
                 ),
               ),

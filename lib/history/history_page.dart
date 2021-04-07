@@ -1,6 +1,9 @@
 import 'package:bac_calculator/colors/custom_colors.dart';
+import 'package:bac_calculator/history/event_tile.dart';
 import 'package:flutter/material.dart';
-import 'package:table_calendar/table_calendar.dart';
+import 'package:flutter_calendar_carousel/classes/event.dart';
+import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
+import 'package:intl/intl.dart';
 
 class HistoryPage extends StatefulWidget {
   @override
@@ -9,138 +12,156 @@ class HistoryPage extends StatefulWidget {
 
 class _HistoryPageState extends State<HistoryPage> with TickerProviderStateMixin {
 
-  Map<DateTime, List> _events;
-  List _selectedEvents;
-  AnimationController _animationController;
-  CalendarController _calendarController;
+  String _currentMonth = DateFormat.yMMM().format(DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day));
+  DateTime _currentDate = DateTime.now();
+  DateTime _targetDateTime = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+  List<String> _eventsList = [];
 
-  Widget _buildTableCalendar() {
-    return TableCalendar(
-      calendarController: _calendarController,
-      events: _events,
-      //holidays: _holidays,
-      startingDayOfWeek: StartingDayOfWeek.sunday,
-      calendarStyle: CalendarStyle(
-        selectedColor: CustomColors.primary,
-        todayColor: CustomColors.primary,
-        markersColor: CustomColors.liberty,
-        outsideDaysVisible: false,
-      ),
-      headerStyle: HeaderStyle(
-        formatButtonTextStyle:
-            TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
-        formatButtonDecoration: BoxDecoration(
-          color: CustomColors.primary,
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-      ),
-      onDaySelected: _onDaySelected,
-      onVisibleDaysChanged: _onVisibleDaysChanged,
-      onCalendarCreated: _onCalendarCreated,
-    );
-  }
-
-  void _onDaySelected(DateTime day, List events, List holidays) {
-    print('CALLBACK: _onDaySelected');
-    setState(() {
-      _selectedEvents = events;
-    });
-  }
-
-  void _onVisibleDaysChanged(DateTime first, DateTime last, CalendarFormat format) {
-    print('CALLBACK: _onVisibleDaysChanged');
-  }
-
-  void _onCalendarCreated(DateTime first, DateTime last, CalendarFormat format) {
-    print('CALLBACK: _onCalendarCreated');
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    _calendarController.dispose();
-    super.dispose();
-  }
+  EventList<Event> _markedDateMap;
 
   @override
   void initState() {
     super.initState();
-    final _selectedDay = DateTime.now();
 
-    _events = {
-      _selectedDay.subtract(Duration(days: 30)): [
-        'Event A0',
-        'Event B0',
-        'Event C0'
-      ],
-      _selectedDay.subtract(Duration(days: 27)): ['Event A1'],
-      _selectedDay.subtract(Duration(days: 20)): [
-        'Event A2',
-        'Event B2',
-        'Event C2',
-        'Event D2'
-      ],
-      _selectedDay.subtract(Duration(days: 16)): ['Event A3', 'Event B3'],
-      _selectedDay.subtract(Duration(days: 10)): [
-        'Event A4',
-        'Event B4',
-        'Event C4'
-      ],
-      _selectedDay.subtract(Duration(days: 4)): [
-        'Event A5',
-        'Event B5',
-        'Event C5'
-      ],
-      _selectedDay.subtract(Duration(days: 2)): ['Event A6', 'Event B6'],
-      _selectedDay: ['Event A7', 'Event B7', 'Event C7', 'Event D7'],
-      _selectedDay.add(Duration(days: 1)): [
-        'Event A8',
-        'Event B8',
-        'Event C8',
-        'Event D8'
-      ],
-      _selectedDay.add(Duration(days: 3)):
-          Set.from(['Event A9', 'Event A9', 'Event B9']).toList(),
-      _selectedDay.add(Duration(days: 7)): [
-        'Event A10',
-        'Event B10',
-        'Event C10'
-      ],
-      _selectedDay.add(Duration(days: 11)): ['Event A11', 'Event B11'],
-      _selectedDay.add(Duration(days: 17)): [
-        'Event A12',
-        'Event B12',
-        'Event C12',
-        'Event D12'
-      ],
-      _selectedDay.add(Duration(days: 22)): ['Event A13', 'Event B13'],
-      _selectedDay.add(Duration(days: 26)): [
-        'Event A14',
-        'Event B14',
-        'Event C14'
-      ],
-    };
-
-    _selectedEvents = _events[_selectedDay] ?? [];
-    _calendarController = CalendarController();
-
-    _animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 400),
+    _markedDateMap = new EventList<Event>(
+      events: {}
     );
 
-    _animationController.forward();
+    _markedDateMap.add(
+        new DateTime(2021, 4, 25),
+        new Event(
+          date: new DateTime(2021, 6, 25),
+          title: '1',
+          icon: _icon(),
+      ));
+
+      _markedDateMap.add(
+        new DateTime(2021, 6, 25),
+        new Event(
+          date: new DateTime(2021, 6, 25),
+          title: '1',
+          icon: _icon(),
+      ));
+
+      _markedDateMap.add(
+        new DateTime(2021, 6, 25),
+        new Event(
+          date: new DateTime(2021, 6, 25),
+          title: '2',
+          icon: _icon(),
+      ));
+
+      _markedDateMap.add(
+        new DateTime(2021, 6, 25),
+        new Event(
+          date: new DateTime(2021, 6, 25),
+          title: '3',
+          icon: _icon(),
+      ));
+
+      _markedDateMap.add(
+        new DateTime(2021, 6, 25),
+        new Event(
+          date: new DateTime(2021, 6, 25),
+          title: '4',
+          icon: _icon(),
+      ));
   }
-  
+
   @override
   Widget build(BuildContext context) {
+
+    final _calendarCarousel = CalendarCarousel<Event>(
+      onDayPressed: (date, events) {
+        _eventsList.clear();
+        setState(() => _currentDate = date);
+        events.forEach((event) => _eventsList.add(event.title));
+      },
+      weekendTextStyle: TextStyle(
+        color: Colors.red,
+        fontSize: 12
+      ),
+      thisMonthDayBorderColor: Colors.grey,
+      headerText: _currentMonth,
+      markedDatesMap: _markedDateMap,
+      weekFormat: false,
+      height: 450,
+      selectedDateTime: _currentDate,
+      showIconBehindDayText: true,
+      customGridViewPhysics: NeverScrollableScrollPhysics(),
+      markedDateShowIcon: true,
+      markedDateIconMaxShown: 1,
+      selectedDayButtonColor: CustomColors.primary,
+      headerTextStyle: TextStyle(
+        fontSize: 18,
+        color: Colors.black
+      ),
+      iconColor: CustomColors.deepGray,
+      todayTextStyle: TextStyle(
+        color: Colors.blue,
+        fontSize: 12
+      ),
+      selectedDayTextStyle: TextStyle(
+        color: Colors.white
+      ),
+      weekdayTextStyle: TextStyle(
+        color: CustomColors.primary
+      ),
+      markedDateIconBuilder: (event) {
+        return event.icon ?? Icon(Icons.help_outline);
+      },
+      onCalendarChanged: (DateTime date) {
+        this.setState(() {
+          _targetDateTime = date;
+         _currentMonth = DateFormat.yMMM().format(_targetDateTime);
+        });
+      },
+      minSelectedDate: _currentDate.subtract(Duration(days: 360)),
+      maxSelectedDate: _currentDate.add(Duration(days: 360)),
+      todayButtonColor: Colors.transparent,
+      todayBorderColor: CustomColors.primary,
+      markedDateMoreShowTotal: true,
+    );
+
     return Container(
       child: Column(
         children: [
-          _buildTableCalendar()
+          Container(
+              child: _calendarCarousel,
+            ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: Divider(
+              color: Colors.black,
+              height: 4,
+            ),
+          ),
+          Expanded(
+            child: Container(
+              child: ListView.separated(
+                physics: BouncingScrollPhysics(),
+                separatorBuilder: (context, index) => Divider(),
+                itemCount: _eventsList.length,
+                itemBuilder: (context, index) {
+                  return EventTile(eventTitle: _eventsList[index],);
+                }
+              ),
+            ),
+          )
         ],
       ),
-      
     );
   }
+
+  static Widget _icon() => Container(
+    decoration: BoxDecoration(
+      shape: BoxShape.circle,
+      border: Border.all(
+        color: CustomColors.secondary,
+        width: 2
+      )
+    ),
+  );
+
 }
+

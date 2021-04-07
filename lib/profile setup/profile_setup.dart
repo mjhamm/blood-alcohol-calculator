@@ -70,7 +70,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
               child: Container(
                 height: widget.update ? MediaQuery.of(context).size.height - (120) : MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0, bottom: 24.0),
+                  padding: const EdgeInsets.only(top: 8.0, left: 16.0, right: 16.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -295,47 +295,53 @@ class _ProfileSetupState extends State<ProfileSetup> {
                           ),
                       ),
                       Spacer(),
-                      ConstrainedBox(
-                        constraints: BoxConstraints.tightFor(width: 250, height: 40),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            if (widget.update) {
-                              displayToast('Profile Updated.');
-                            } else {
-                              displayToast('Profile Created.');
-                            }
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => MainScreen()));
-                            // if (nameController.text.isEmpty) {
-                            //   displayToast('Please enter your name.');
-                            // } else {
-                            //   if (ageController.text.isEmpty) {
-                            //     displayToast('Please enter your age.');
-                            //   } else {
-                            //     if (weightController.text.isEmpty) {
-                            //       displayToast('Please enter your weight.');
-                            //     } else {
-                            //       if (heightController.text.isEmpty) {
-                            //         displayToast('Please enter your height.');
-                            //       }
-                            //       else {
-                            //         Navigator.of(context).push(MaterialPageRoute(builder: (context) => StartPage()));
-                            //       }
-                            //     }
-                            //   }
-                            // }
-                          },
-                          child: Text(
-                            widget.update ? 'Update Profile' : 'Create Profile',
-                            style: GoogleFonts.openSans(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 24.0),
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints.tightFor(width: 250, height: 40),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              if (widget.update) {
+                                displayToast('Profile Updated.');
+                              } else {
+                                displayToast('Profile Created.');
+                              }
+                              Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(builder: (context) => MainScreen()),
+                                (Route<dynamic> route) => false,
+                              );
+                              // if (nameController.text.isEmpty) {
+                              //   displayToast('Please enter your name.');
+                              // } else {
+                              //   if (ageController.text.isEmpty) {
+                              //     displayToast('Please enter your age.');
+                              //   } else {
+                              //     if (weightController.text.isEmpty) {
+                              //       displayToast('Please enter your weight.');
+                              //     } else {
+                              //       if (heightController.text.isEmpty) {
+                              //         displayToast('Please enter your height.');
+                              //       }
+                              //       else {
+                              //         Navigator.of(context).push(MaterialPageRoute(builder: (context) => StartPage()));
+                              //       }
+                              //     }
+                              //   }
+                              // }
+                            },
+                            child: Text(
+                              widget.update ? 'Update Profile' : 'Create Profile',
+                              style: GoogleFonts.openSans(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600
+                              ),
                             ),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            primary: CustomColors.primary,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
+                            style: ElevatedButton.styleFrom(
+                              primary: CustomColors.primary,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
                             ),
                           ),
                         ),
