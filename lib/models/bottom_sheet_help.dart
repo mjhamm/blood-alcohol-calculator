@@ -11,13 +11,13 @@ class BottomSheetHelp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    Future<void> _openCallTaxi(String url) async {
-      if (await canLaunch(url)) {
-        await launch(url);
-      } else {
-        throw 'Could not launch $url';
-      }
-    }
+    // Future<void> _openCallTaxi(String url) async {
+    //   if (await canLaunch(url)) {
+    //     await launch(url);
+    //   } else {
+    //     throw 'Could not launch $url';
+    //   }
+    // }
 
     return Padding(
       padding: MediaQuery.of(context).viewInsets,

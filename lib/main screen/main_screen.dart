@@ -31,7 +31,7 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex= 0;
   var startPage = new StartPage();
   var historyPage = new HistoryPage();
-  var notesPage = new NotesPage();
+  var notesPage = new NotesPage(addNote: false,);
   var profileUpdate = new ProfileSetup(update: true,);
 
   String changeMainText(int _currentIndex) {

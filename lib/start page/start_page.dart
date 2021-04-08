@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:bac_calculator/colors/custom_colors.dart';
+import 'package:bac_calculator/notes/notes_page.dart';
 import 'package:bac_calculator/start%20page/timelapse_sober.dart';
 import 'package:bac_calculator/start%20page/timelapse_timer.dart';
 import 'package:floating_action_bubble/floating_action_bubble.dart';
@@ -19,6 +20,8 @@ class _StartPageState extends State<StartPage> with SingleTickerProviderStateMix
 
   Animation<double> _animation;
   AnimationController _animationController;
+
+  double _currentBAC = 0.00;
 
   bool _addClicked = false;
 
@@ -83,6 +86,7 @@ class _StartPageState extends State<StartPage> with SingleTickerProviderStateMix
           onPress: () {
             setState(() {
               _addClicked = false;
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => NotesPage(currentBAC: _currentBAC, addNote: true,)));
             });
             _animationController.reverse();
           }
@@ -168,7 +172,7 @@ class _StartPageState extends State<StartPage> with SingleTickerProviderStateMix
                                         ),
                                       ),
                                       Text(
-                                        '0.00',
+                                        '${_currentBAC.toStringAsFixed(3)}',
                                         style: GoogleFonts.openSans(
                                           color: CustomColors.primary,
                                           fontSize: 56,
