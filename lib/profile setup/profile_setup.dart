@@ -185,6 +185,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
                                 child: TextField(
                                   controller: ageController,
                                   textAlign: TextAlign.center,
+                                  keyboardType: TextInputType.number,
                                   decoration: InputDecoration.collapsed(
                                     hintText: 'Age',
                                     hintStyle: GoogleFonts.openSans(
@@ -231,6 +232,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
                                 child: TextField(
                                   controller: weightController,
                                   textAlign: TextAlign.center,
+                                  keyboardType: TextInputType.number,
                                   decoration: InputDecoration.collapsed(
                                     hintText: 'Weight',
                                     hintStyle: GoogleFonts.openSans(
@@ -277,6 +279,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
                                 child: TextField(
                                   controller: heightController,
                                   textAlign: TextAlign.center,
+                                  keyboardType: TextInputType.number,
                                   decoration: InputDecoration.collapsed(
                                     hintText: 'Height',
                                     hintStyle: GoogleFonts.openSans(

@@ -1,3 +1,4 @@
+import 'package:bac_calculator/bac%20notes%20page/bac_notes_page.dart';
 import 'package:bac_calculator/notes/notes_list_tile_item.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,7 +17,7 @@ class NotesPage extends StatefulWidget {
 class _NotesPageState extends State<NotesPage> {
 
   final List<NotesListTileItem> notesBACNumbers = [
-    new NotesListTileItem(0.00),
+    new NotesListTileItem(0.000),
     new NotesListTileItem(0.001, 0.049),
     new NotesListTileItem(0.050, 0.079),
     new NotesListTileItem(0.080, 0.099),
@@ -39,6 +40,10 @@ class _NotesPageState extends State<NotesPage> {
     iconTheme: IconThemeData(color: Colors.black),
     leading: BackButton(color: Colors.black,),
   );
+
+  navigateToBAC(String title) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => BACNotesPage(title: title,)));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,21 +82,27 @@ class _NotesPageState extends State<NotesPage> {
                   switch(index) {
                     case 0:
                       return ListTile(
-                        onTap: () {},
+                        onTap: () {
+                          navigateToBAC('BAC is ${notesBACNumbers[index].fromBAC.toStringAsFixed(3)}');
+                        },
                         title: Text('BAC is ${notesBACNumbers[index].fromBAC.toStringAsFixed(3)}'),
                         trailing: Icon(Icons.chevron_right, color: Colors.grey[500],),
                       );
                     break;
                     case 9:
                       return ListTile(
-                        onTap: () {},
+                        onTap: () {
+                          navigateToBAC('BAC over ${notesBACNumbers[index].fromBAC.toStringAsFixed(3)}');
+                        },
                         title: Text('BAC over ${notesBACNumbers[index].fromBAC.toStringAsFixed(3)}'),
                         trailing: Icon(Icons.chevron_right, color: Colors.grey[500],),
                       );
                     break;
                     default:
                       return ListTile(
-                        onTap: () {},
+                        onTap: () {
+                          navigateToBAC('BAC is between ${notesBACNumbers[index].fromBAC.toStringAsFixed(3)} to ${notesBACNumbers[index].toBAC.toStringAsFixed(3)}');
+                        },
                         title: Text('BAC is between ${notesBACNumbers[index].fromBAC.toStringAsFixed(3)} to ${notesBACNumbers[index].toBAC.toStringAsFixed(3)}'),
                         trailing: Icon(Icons.chevron_right, color: Colors.grey[500],),
                       );
